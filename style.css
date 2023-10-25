@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+
+:root {
+
+  --width-animation: width .6s linear;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* changes the 1REM from 16px to 10px */
+  font-size: 62.5%;
+}
+
+body {
+
+  font-family: "Muli", sans-serif;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #EAFBFF;
+  background-image: linear-gradient(to bottom, #EAFBFF 0%, #EAFBFF 50%, #5290F9 50%, #5290F9 100%);
+}
+
+nav {
+  background-color: #fff;
+  padding: 20px;
+  width: 8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+
+  /* transition: width .6s linear; */
+  transition: var(--width-animation);
+}
+
+nav.active {
+  width: 38rem;
+}
+
+ul {
+  list-style: none;
+
+  display: flex;
+
+  width: 0;
+
+  /* transition: width .6s linear; */
+  transition: var(--width-animation);
+}
+
+nav.active ul {
+  width: 100%;
+}
+
+ul a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #000;
+  margin: 0 10px;
+}
+
+nav ul li {
+  transform: rotateY(0deg);
+  opacity: 0;
+  transition: transform .6s linear, opacity .6s linear;
+
+}
+
+nav.active ul li {
+  transform: rotateY(360deg);
+  opacity: 1;
+}
+
+.icon {
+  background-color: #fff;
+  border: none;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+}
+
+.icon:focus,
+.icon:focus-visible {
+  outline: none;
+}
+
+.icon .line {
+  position: absolute;
+  background-color: #5290f9;
+  width: 20px;
+  height: 2px;
+
+  top: 10px;
+  left: 5px;
+
+  transition: transform .6s linear;
+}
+
+.icon .line--2 {
+  top: auto;
+  bottom: 10px;
+}
+
+nav.active .icon .line--1 {
+  transform: rotate(-765deg) translateY(5.5px);
+}
+
+nav.active .icon .line--2 {
+  transform: rotate(765deg) translateY(-5.5px);
+}
